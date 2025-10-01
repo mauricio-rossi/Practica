@@ -1,0 +1,52 @@
+# CI/CD – Practica App 
+
+## 🎯 Goals
+- Keep `main` always releasable.
+- Give fast feedback on changes (tests/lint/build).
+- Share preview links for quick tester feedback.
+- Create reliable “snapshots” of each sprint.
+
+## 🧭 Desired Flow (when implemented)
+
+[ Push / PR to GitHub ]
+⬇
+[ CI: Lint + Unit/Component Tests + Build check ]
+⬇
+[ PR Previews for testers (staging URL) ]
+⬇
+[ Merge to main → Auto deploy to production ]
+⬇
+[ Tag sprint (sprint-XX-complete) → snapshot kept ]
+
+## 🧱 Scope & Principles
+- **Scope (initial):** web build only; native builds optional later.
+- **Keep it simple first:** lint, minimal tests, build check.
+- **Protect main:** squash-merge only; CI must pass.
+- **Immutable snapshots:** tag each sprint (e.g., `sprint-01-complete`).
+- **Secrets:** stored in repo secrets (when CD is added).
+
+## 🪜 Phased Rollout (future sprints)
+- **Phase 1 (Basic CI):** lint + unit tests + build check on PRs/pushes.
+- **Phase 2 (Previews):** auto deploy PR previews (staging URL).
+- **Phase 3 (Prod Deploy):** auto deploy on merge to `main`.
+- **Phase 4 (Optional Native):** trigger Expo EAS builds from tags.
+
+## 🔍 Quality Gates (once active)
+- CI must pass before merge.
+- P0/P1 bugs must be closed before tagging a sprint complete.
+- Each completed story links to a preview or production URL in its acceptance notes.
+
+## 🧩 Artifacts & Traceability
+- **Sprint tags:** `sprint-XX-complete` act as rollback points.
+- **PR previews:** linked in PRs and sprint docs for testers.
+- **Production URL:** referenced in sprint overviews and completed stories.
+
+## 🚧 Risks & Mitigations
+- **Build failures:** keep CI fast and minimal at first; fail early.
+- **Flaky tests:** start with a few stable tests; grow gradually.
+- **Secret handling:** no secrets in code; store in repo secrets when CD arrives.
+
+## 📝 Where this shows up in docs
+- `sprints/sprint-XX/sprint-overview.md`: links to PR previews / prod URL.
+- `sprints/sprint-XX/completed-stories/US-XXXX.md`: acceptance evidence includes preview/prod link when available.
+- `sprints/sprint-XX/retrospective.md`: note CI/CD wins/issues.
