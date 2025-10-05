@@ -48,5 +48,5 @@
 
 ## 📝 Where this shows up in docs
 - `sprints/sprint-XX/sprint-overview.md`: links to PR previews / prod URL.
-- `sprints/sprint-XX/completed-stories/US-XXXX.md`: acceptance evidence includes preview/prod link when available.
+- `sprints/sprint-XX/completed-stories/US-XXXXX.md`: acceptance evidence includes preview/prod link when available.
 - `sprints/sprint-XX/retrospective.md`: note CI/CD wins/issues.

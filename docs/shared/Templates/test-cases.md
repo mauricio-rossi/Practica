@@ -1,10 +1,10 @@
 
 ## 🧪 Templates
 
-### Test Case (`TC-FC-0001.md`)
+### Test Case (`TC-FC-00001.md`)
 ```markdown
 ---
-id: TC-FC-0001
+id: TC-FC-00001
 title: View first card (front)
 feature: flashcards
 priority: P1
