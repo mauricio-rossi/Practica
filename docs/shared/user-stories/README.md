@@ -16,6 +16,7 @@ Stories planned in a sprint are linked here; sprint docs do not duplicate the de
 | [US-00003](US-00003.md) | Define Product Vision & Personas | High | 🔄 In Progress |
 | [US-00004](US-00004.md) | CI Setup for Testing | Medium | 🔄 In Progress |
 | [US-00005](US-00005.md) | Deploy Build to Netlify | Medium | 🔄 In Progress |
+| [US-00006](US-00006.md) | GitHub Kanban Board Setup | High | 🔄 In Progress |
 
 ---
 
