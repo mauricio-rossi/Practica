@@ -11,26 +11,26 @@ docs/
 ├─ shared/
 │  ├─ user-stories/                  # backlog (planned stories)
 │  │   ├─ README.md                  # backlog index
-│  │   ├─ US-0001.md
-│  │   └─ US-0002.md
+│  │   ├─ US-00001.md
+│  │   └─ US-00002.md
 │  └─ test-cases/                    # reusable, single-file test cases
 │      ├─ README.md                  # index of all cases
-│      ├─ TC-FC-0001.md              # Flashcard – View first card
-│      ├─ TC-FC-0002.md              # Flashcard – Flip card
-│      └─ TC-AU-0001.md              # Audio – Play pronunciation
+│      ├─ TC-FC-00001.md              # Flashcard – View first card
+│      ├─ TC-FC-00002.md              # Flashcard – Flip card
+│      └─ TC-AU-00001.md              # Audio – Play pronunciation
 └─ sprints/
    └─ sprint-01/
       ├─ sprint-overview.md          # goal, planned stories, related docs
       ├─ sprint-scope-testing.md     # which test cases executed this sprint
       ├─ completed-stories/          # one file per story outcome
-      │   ├─ US-0001.md              # references test cases + session logs
-      │   └─ US-0002.md
+      │   ├─ US-00001.md              # references test cases + session logs
+      │   └─ US-00002.md
       └─ tests/                      # actual test execution (per sprint)
          ├─ test-session-2025-09-24.md   # log of cases run + results
          └─ screenshots/                 # proof attached to session/story
-            ├─ tc-fc-0001_iphone.png
-            ├─ tc-fc-0002_android.png
-            └─ tc-au-0001_chrome.png
+            ├─ tc-fc-00001_iphone.png
+            ├─ tc-fc-00002_android.png
+            └─ tc-au-00001_chrome.png
 
 ---
 
@@ -38,17 +38,17 @@ docs/
 
 | File | Purpose |
 |------|---------|
-| `shared/test-cases/TC-XXXX.md` | Single test case (steps, expected result, tags) |
+| `shared/test-cases/TC-XXXXX.md` | Single test case (steps, expected result, tags) |
 | `shared/test-cases/README.md` | Index of all cases with links, grouped by feature |
 | `sprint-XX/sprint-scope-testing.md` | Which test cases were executed in this sprint |
-| `sprint-XX/completed-stories/US-XXXX.md` | Story results: which cases verified it, evidence, pass/fail |
+| `sprint-XX/completed-stories/US-XXXXX.md` | Story results: which cases verified it, evidence, pass/fail |
 | `sprint-XX/tests/test-session-YYYY-MM-DD.md` | Execution log: results of running cases (story + non-story) |
 
 ---
 
 ## 🔖 Naming Conventions
 - **Test cases:** `TC-<feature>-<number>.md`  
-  Example: `TC-FC-0001.md` (Flashcards – Case 1)  
+  Example: `TC-FC-00001.md` (Flashcards – Case 1)  
 - **Session logs:** `test-session-YYYY-MM-DD.md`  
   Example: `test-session-2025-09-24.md`  
 
@@ -56,10 +56,10 @@ docs/
 
 ## 🧪 Templates
 
-### Test Case (`TC-FC-0001.md`)
+### Test Case (`TC-FC-00001.md`)
 ```markdown
 ---
-id: TC-FC-0001
+id: TC-FC-00001
 title: View first card (front)
 feature: flashcards
 priority: P1

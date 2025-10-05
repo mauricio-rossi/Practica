@@ -32,7 +32,7 @@ I follow an Agile-inspired methodology focused on:
 ### 🔹 Backlog
 
 All user stories are stored in the **backlog folder**: `docs/shared/user-stories/`.  
-Each story has its own file (`US-0001.md`, `US-0002.md`, etc.) containing its ID, description, persona, and acceptance criteria.  
+Each story has its own file (`US-00001.md`, `US-00002.md`, etc.) containing its ID, description, persona, and acceptance criteria.  
 
 A `README.md` in the same folder acts as the **backlog index**, providing an overview of stories with their **current priority and status**. Sprint files do not duplicate story details — they only link to these story files.  
 
@@ -47,10 +47,10 @@ Backlog stories may evolve by:
 
 | ID      | Title          | Priority | Status       |
 |---------|----------------|----------|--------------|
-| [US-0001](US-0001.md) | Email Sign-up   | High     | ✅ Completed |
-| [US-0002](US-0002.md) | Login           | High     | 🔄 In Progress |
-| [US-0003](US-0003.md) | Profile Page    | Medium   | 📋 Backlog |
-| [US-0004](US-0004.md) | Password Reset  | Low      | ❌ Closed |
+| [US-00001](US-00001.md) | Email Sign-up   | High     | ✅ Completed |
+| [US-00002](US-00002.md) | Login           | High     | 🔄 In Progress |
+| [US-00003](US-00003.md) | Profile Page    | Medium   | 📋 Backlog |
+| [US-00004](US-00004.md) | Password Reset  | Low      | ❌ Closed |
 
 ---
 
@@ -71,10 +71,10 @@ This file acts as the **central map** connecting backlog entries with sprint out
 
 | ID      | Title          | Sprint  | Outcome                  | Result Link |
 |---------|----------------|---------|--------------------------|-------------|
-| US-0001 | Email Sign-up  | Sprint 1 | ✅ Completed             | [Results](../sprints/sprint-01/completed-stories.md#us-0001) |
-| US-0002 | Login          | Sprint 2 | 🔄 In Progress           | - |
-| US-0003 | Profile Page   | Sprint 2 | ⏸ Split → US-0010, US-0011 | - |
-| US-0004 | Password Reset | Sprint 2 | ❌ Closed (not needed)   | - |
+| US-00001 | Email Sign-up  | Sprint 1 | ✅ Completed             | [Results](../sprints/sprint-01/completed-stories.md#us-00001) |
+| US-00002 | Login          | Sprint 2 | 🔄 In Progress           | - |
+| US-00003 | Profile Page   | Sprint 2 | ⏸ Split → US-00010, US-00011 | - |
+| US-00004 | Password Reset | Sprint 2 | ❌ Closed (not needed)   | - |
 
 ### 🔹 Shared Documents
 
@@ -137,15 +137,15 @@ Optional: for public releases, create versioned tags (e.g., `v0.1.0`).
 
 ```bash
 # Start a feature branch
-git checkout -b feature/US-0002-login
+git checkout -b feature/US-00002-login
 
 # Work and commit with full history
-git commit -m "feat(auth): add login form [US-0002]"
+git commit -m "feat(auth): add login form [US-00002]"
 
 # Squash into main when story is complete
 git checkout main
-git merge --squash feature/US-0002-login
-git commit -m "US-0002: Login with email"
+git merge --squash feature/US-00002-login
+git commit -m "US-00002: Login with email"
 
 # Tag sprint milestone at sprint end
 git tag -a sprint-01-complete -m "End of Sprint 01"
@@ -164,7 +164,7 @@ All commits follow this format:
 
 `<type>(<scope>): <summary> [Story ID]`
 
-- Example: `feat(auth): add login validation [US-0004]`
+- Example: `feat(auth): add login validation [US-00004]`
 - Types: `feat`, `fix`, `docs`, `test`, `refactor`, `style`, `chore`
 - Scope is optional but encouraged for clarity
 - Bracketed Story ID links commit to sprint planning
@@ -172,7 +172,7 @@ All commits follow this format:
 Documentation updates should use the `docs()` type and include the path to the updated file.
 
 Example:
-docs: updated shared/user-personas.md to include new target learner group [US-0003]
+docs: updated shared/user-personas.md to include new target learner group [US-00003]
 
 ### 🔸 Non-Story Commits
 
