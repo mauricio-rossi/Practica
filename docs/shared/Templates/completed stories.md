@@ -1,16 +1,16 @@
-# 📝 Completed Story – [US-XXXX Title]
+# 📝 Completed Story – [US-XXXXX Title]
 
 ## 📖 Story Reference
-- **Story ID:** US-XXXX  
+- **Story ID:** US-XXXXX  
 - **Planned In:** Sprint XX  
-- **Original Story File:** [US-XXXX](../../shared/user-stories/US-XXXX.md)  
-- **Result Link (Story Index):** [Back to Story Index](../../shared/story-index.md#us-xxxx)
+- **Original Story File:** [US-XXXXX](../../shared/user-stories/US-XXXXX.md)  
+- **Result Link (Story Index):** [Back to Story Index](../../shared/story-index.md#us-xxxxx)
 
 ---
 
 ## 🎯 Story Goal
 As a [role], I want [goal], so that [reason].  
-*(Original: [US-XXXX](../../shared/user-stories/US-XXXX.md))*
+*(Original: [US-XXXXX](../../shared/user-stories/US-XXXXX.md))*
 
 ---
 
@@ -18,7 +18,7 @@ As a [role], I want [goal], so that [reason].
 - [ ] Criterion 1  
 - [ ] Criterion 2  
 - [ ] Criterion 3  
-*(Original: [US-XXXX](../../shared/user-stories/US-XXXX.md))*
+*(Original: [US-XXXXX](../../shared/user-stories/US-XXXXX.md))*
 
 ---
 
@@ -29,7 +29,7 @@ As a [role], I want [goal], so that [reason].
 - **Pull Requests (if applicable):**  
   - [PR #22 – Flashcard Feature](https://github.com/your/repo/pull/22)  
 - **Squash Commit in `main`:**  
-  - [`US-XXXX: Feature summary`](https://github.com/your/repo/commit/abc123)
+  - [`US-XXXXX: Feature summary`](https://github.com/your/repo/commit/abc123)
 
 ---
 
