@@ -7,6 +7,7 @@ This document outlines the Agile approach used in the development of the **Pract
 - [🎯 Agile Philosophy](#-agile-philosophy)
 - [🧩 Core Agile Artifacts](#-core-agile-artifacts)
 - [📆 Sprint Lifecycle](#-sprint-lifecycle)
+- [🌿 Branching and Promotion Workflow](#branching-and-promotion-workflow)
 - [🔄 Git Flow](#-git-flow)
 - [🔐 Commit Message Convention](#-commit-message-convention)
 - [🧪 Testing Strategy (Planned)](#-testing-strategy-planned)
@@ -63,7 +64,7 @@ It records:
 - Story ID and title  
 - Sprint where it was planned/completed  
 - Final outcome (Completed, Split, Dropped, Replaced)  
-- Links to backlog and sprint results  (Issues, Commits, Outcomes) 
+- Links to the original story file and the completed story record when available
 
 This file acts as the **central map** connecting backlog entries with sprint outcomes.  
 
@@ -71,7 +72,7 @@ This file acts as the **central map** connecting backlog entries with sprint out
 
 | ID      | Title          | Sprint  | Outcome                  | Result Link |
 |---------|----------------|---------|--------------------------|-------------|
-| US-00001 | Email Sign-up  | Sprint 1 | ✅ Completed             | [Results](../sprints/sprint-01/completed-stories.md#us-00001) |
+| US-00001 | Email Sign-up  | Sprint 1 | ✅ Completed             | [Results](../sprints/sprint-01/completed/US-00001.md) |
 | US-00002 | Login          | Sprint 2 | 🔄 In Progress           | - |
 | US-00003 | Profile Page   | Sprint 2 | ⏸ Split → US-00010, US-00011 | - |
 | US-00004 | Password Reset | Sprint 2 | ❌ Closed (not needed)   | - |
@@ -93,68 +94,106 @@ These serve as living documents and may be referenced by multiple sprints.
 
 Each sprint has its own folder: `docs/sprints/sprint-XX/`, containing:
 
-- `sprint-overview.md`
-- `user-stories.md`
-- `completed-stories.md`
-- `retrospective.md`
+- `sprint-overview.md`  
+  Defines the sprint goal, planned stories, and high-level scope for the iteration.
+
+- `feedback.md`  
+  Records raw observations, tester feedback, and issues discovered during the sprint.
+
+- `retrospective.md`  
+  Documents reflections at the end of the sprint, including what worked well and what should improve.
+
+- `completed/`  
+  Contains a Completed Story document (`US-XXXXX.md`) for each story accepted during the sprint.  
+  These files record acceptance verification, delivery notes, and evidence of delivered functionality.
 
 ---
 
 ## 📆 Sprint Lifecycle
 
 1. **Backlog Refinement**
-   - Define user stories & acceptance criteria in user-stories.md
-   - Add them to the backlog index (`docs/shared/user-stories/README.md`) with priority and persona link  
-   - Re-prioritize unfinished stories as needed  
+   - Define user stories & acceptance criteria in the story files located in `docs/shared/user-stories/`
+   - Add stories to the backlog index (`docs/shared/user-stories/README.md`) with priority and status
+   - Re-prioritize unfinished stories as needed
 
-2. **Sprint Planning**  
-   - Define the sprint goal in `roadmap.md`  
-   - Select 1–3 stories from the backlog for the sprint  
-   - Create GitHub Issues for each story and any related tasks, labeled with the story ID and sprint  
-   - Track Issues on a GitHub Project board (Kanban view) for sprint visibility  
+2. **Sprint Planning**
+   - Define the sprint goal in `roadmap.md`
+   - Select 1–3 stories from the backlog for the sprint
+   - Record the sprint plan in `docs/sprints/sprint-XX/sprint-overview.md`
+   - Create GitHub Issues for each story and any related tasks
+   - Track Issues on the GitHub Project board (Kanban) for sprint visibility
 
-3. **Development**  
-   - Create a `feature/*` branch per story  
-   - Develop and commit freely, referencing story IDs in commits  
-   - Test across devices and browsers  
+3. **Development**
+   - Create a `feature/*` branch per story
+   - Implement the story and commit freely while referencing the Story ID in commits
+   - Use issues and the project board to track work progress
+   - Test the feature in relevant environments (mobile, web, or desktop as applicable).
 
-4. **Integration & Wrap-Up**  
-   - Squash-merge each feature into `main` (one commit per story)  
-   - Record outcomes in `completed-stories.md`, including acceptance results, delivery notes, and evidence (PRs, demos, screenshots)  
-   - Update shared docs (e.g., roadmap, feedback log)  
-   - Tag the sprint milestone in `main` (e.g., `sprint-01-complete`) to preserve a versioned snapshot of completed work  
+4. **Acceptance Review**
+   - Verify that all acceptance criteria are satisfied
+   - Confirm the implementation aligns with the original story goal
+   - Note any deviations, deferred work, or follow-up tasks
 
-5. **Review & Retrospective**  
-   - Share deployed PWA with testers and record feedback in `feedback-log.md`  
-   - Document reflections in `retrospective.md` (what worked, what to improve)  
-   - Update the backlog and `roadmap.md` for the next sprint  
+   Once verified, document the story using the **Completed Story template** located at:
 
-Optional: for public releases, create versioned tags (e.g., `v0.1.0`).  
+   `docs/sprints/sprint-XX/completed/US-XXXXX.md`
+
+   This file records:
+   - Acceptance verification
+   - Delivery notes
+   - Evidence of delivered functionality
+
+   The Completed Story document serves as the **final validation record** of the work delivered during the sprint.
+
+5. **Integration**
+   - Squash-merge the feature branch into `develop`
+   - Ensure the squash commit references the Story ID
+
+6. **Documentation Updates**
+   - Update the **Story Index** (`docs/shared/story-index.md`) with the story outcome and result link
+   - Update any relevant shared documentation (roadmap, feature list, feedback log)
+
+7. **Sprint Promotion**
+   - At the end of the sprint, squash-merge the completed sprint from `develop` into `main`
+   - Tag the sprint milestone in `main` (e.g., `sprint-01-complete`) to preserve a versioned snapshot of completed work
+
+8. **Sprint Wrap-Up**
+   - Record reflections and improvement notes in `retrospective.md`
+   - Carry unfinished stories back to the backlog for re-prioritization
+
+Optional: For public releases, create version tags such as `v0.1.0`.
 
 ---
 
-## 🔄 Git Flow
+## 🌿 Branching and Promotion Workflow
 
-```bash
-# Start a feature branch
-git checkout -b feature/US-00002-login
+The repository uses a layered branching model designed to preserve detailed development history while keeping shared integration branches concise and readable.
 
-# Work and commit with full history
-git commit -m "feat(auth): add login form [US-00002]"
+### Branch Strategy
 
-# Squash into main when story is complete
-git checkout main
-git merge --squash feature/US-00002-login
-git commit -m "US-00002: Login with email"
+| Branch | Purpose |
+|------|------|
+| `feature/*` | Full development history for a single user story |
+| `develop` | Squashed integration branch containing completed user stories |
+| `main` | Squashed sprint-level history representing stable internal milestones |
+| `releases` | Squashed release-level history representing public or externally shared versions |
 
-# Tag sprint milestone at sprint end
-git tag -a sprint-01-complete -m "End of Sprint 01"
-git push origin sprint-01-complete
+### Workflow
 
-# Tag release if public
-git tag -a v0.1.0 -m "First alpha release"
-git push origin v0.1.0
-```
+1. Each user story is implemented in a dedicated `feature/*` branch.
+2. Feature branches may contain full development history including intermediate commits.
+3. feature → develop → main → releases
+4. At the end of a sprint, completed work is **squashed from `develop` into `main`**.
+5. Stable internal versions may be promoted from **`main` to `releases`** for public distribution.
+
+### Design Goals
+
+This branching strategy allows the project to:
+
+- Preserve detailed development history during story implementation
+- Keep integration branches clean and readable
+- Maintain clear separation between story, sprint, and release history
+- Support structured Agile documentation alongside development work
 
 ---
 
@@ -165,62 +204,86 @@ All commits follow this format:
 `<type>(<scope>): <summary> [Story ID]`
 
 - Example: `feat(auth): add login validation [US-00004]`
-- Types: `feat`, `fix`, `docs`, `test`, `refactor`, `style`, `chore`
+
+### Commit Types
+
+| Type | Purpose |
+|-----|-----|
+| `feat` | New feature implementation |
+| `fix` | Bug fix |
+| `docs` | Documentation updates |
+| `test` | Test additions or updates |
+| `refactor` | Code restructuring without behavioral change |
+| `style` | Formatting or style-only changes |
+| `chore` | Tooling, maintenance, or dependency updates |
+
 - Scope is optional but encouraged for clarity
+
 - Bracketed Story ID links commit to sprint planning
 
-Documentation updates should use the `docs()` type and include the path to the updated file.
+### Documentation Commits
+
+Documentation updates should use the `docs` type and reference the updated file or section.
 
 Example:
-docs: updated shared/user-personas.md to include new target learner group [US-00003]
+docs: update shared/user-personas.md to include new target learner group [US-00003]
 
 ### 🔸 Non-Story Commits
 
-Occasionally, work arises outside of planned user stories. Use special prefixes:
+Occasionally work arises outside planned user stories. These commits should use a special prefix.
 
-Use the following prefixes when appropriate:
+| Prefix | Purpose |
+|------|------|
+| `NO-STORY:` | Unplanned fixes or small improvements not tied to a story |
+| `CHORE-000:` | Tooling updates, cleanup, refactoring, or developer workflow improvements |
+| `OPS-000:` | CI/CD configuration, deployment, or infrastructure changes |
 
-- `NO-STORY:` – Unplanned fixes or changes not tied to a story
-- `CHORE-000:` – Refactors, cleanup, or dev tools updates
-- `OPS-000:` – CI/CD, deployment, or config work
+Examples:
 
-Example:
+NO-STORY: fix Firebase staging configuration
+CHORE-000: add ESLint configuration and resolve lint errors
+OPS-000: update GitHub Actions cache configuration
 
-NO-STORY: Fix Firebase config for staging environment
-CHORE-000: Add ESLint config and fix lint errors
-OPS-000: Update GitHub Actions cache settings for Expo builds
-
-Non-story commits should be documented in the Sprint Retrospective for visibility and included in squash merges like any other feature into main.
-
----
-
-## 🧪 Testing Strategy (Planned)
-
-I plan to implement:
-
-* Unit testing (e.g., using Jest)
-* Manual testing on mobile and desktop
-* Future: integration or end-to-end testing
-
-Each feature branch should include any relevant unit tests. Test coverage should be committed alongside the code it tests.
+Non-story commits should be documented in the **Sprint Retrospective** for visibility and are included in squash merges like any other work.
 
 ---
 
-## 🔄 CI/CD Pipeline (Planned)
+## 🧪 Testing Strategy
 
-We will use GitHub Actions to:
+Testing will be introduced progressively as the project evolves.
 
-* Run unit tests on push and pull requests
-* Ensure builds are passing before merge
-* Deploy automatically to Netlify
+The testing approach includes:
+
+- **Unit testing** for core logic and reusable components (planned using Jest)
+- **Manual testing** during development on both mobile and desktop environments
+- **Future expansion** toward integration and end-to-end testing
+
+Feature branches should include any relevant unit tests alongside the implementation they validate.
+
+As testing infrastructure matures, coverage expectations and CI enforcement may be expanded.
+
+---
+
+## 🔄 CI/CD Pipeline
+
+Continuous integration will be implemented using **GitHub Actions**.
+
+The pipeline is intended to:
+
+- Run unit tests on push and pull requests
+- Ensure builds pass before merges are accepted
+- Automate deployment for supported environments
+
+As the project evolves, the pipeline may expand to include additional checks such as linting, build verification, or automated release steps.
 
 ---
 
 ## 📌 License
 
-This project uses a **restrictive portfolio license**:
+This project is distributed under a **restrictive portfolio license**.
 
-> Viewable for educational/demo purposes only. Do not reuse or distribute.
+The repository is intended for **educational and demonstration purposes only**.  
+Reuse, redistribution, or commercial use is not permitted without permission.
 
 ---
 
