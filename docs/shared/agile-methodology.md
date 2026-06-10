@@ -76,6 +76,49 @@ This file acts as the **central map** connecting backlog entries with sprint out
 | US-00003 | Profile Page   | Sprint 2 | ⏸ Split → US-00010, US-00011 | - |
 | US-00004 | Password Reset | Sprint 2 | ❌ Closed (not needed)   | - |
 
+### 🔹 Kanban Boards
+
+GitHub Projects are used to visualize sprint progress and separate active story work from non-story technical work.
+
+Two project boards are used:
+
+- **Practica – Sprint Board**: tracks active user stories selected for the current sprint.
+- **Practica – Technical Backlog**: tracks non-story work such as chores, refactors, documentation cleanup, infrastructure, tooling, and workflow tasks.
+
+The Sprint Board uses the following core columns:
+
+| Column | Meaning |
+|--------|---------|
+| Backlog | Story issue exists but active work has not started |
+| In Progress | A branch has been created and implementation/documentation work is active |
+| In Review | A pull request is open and ready for review |
+| Done | The pull request has been merged and acceptance results have been recorded |
+
+Story issues should follow this naming format:
+
+`US-XXXXX: <short description>`
+
+Each story issue should link to the related story file, branch, and pull request when available.
+
+Non-story work should be tracked separately in the Technical Backlog and should not use the `user-story` label. These tasks may use prefixes such as `NO-STORY`, `CHORE-000`, or `OPS-000` depending on the type of work.
+
+Automation rules should stay lightweight:
+
+- New sprint story issues start in **Backlog**.
+- Issues move to **In Progress** when active branch work begins.
+- Issues move to **In Review** when a related pull request is opened.
+- Issues move to **Done** when the pull request is merged and the issue is closed.
+
+Pull requests that complete a story should include a closing keyword such as:
+
+`Closes #<issue-number>`
+
+Partial or supporting work should use non-closing references such as:
+
+`Refs #<issue-number>` or `Related to #<issue-number>`
+
+This prevents stories from closing before acceptance criteria and completed-story documentation are finalized.
+
 ### 🔹 Shared Documents
 
 Located in `docs/shared/`, including:
@@ -111,7 +154,10 @@ Each sprint has its own folder: `docs/sprints/sprint-XX/`, containing:
    - Define the sprint goal in `roadmap.md`  
    - Select 1–3 stories from the backlog for the sprint  
    - Create GitHub Issues for each story and any related tasks, labeled with the story ID and sprint  
-   - Track Issues on a GitHub Project board (Kanban view) for sprint visibility  
+   - Track Issues on the appropriate GitHub Project board:
+     - `Practica – Sprint Board` for active sprint user stories
+     - `Practica – Technical Backlog` for non-story work such as chores, refactors, documentation cleanup, infrastructure, and workflow tasks
+   - Use the Kanban workflow rules defined in the [Kanban Boards](#-kanban-boards) section
 
 3. **Development**  
    - Create a `feature/*` branch per story  
